@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
+import { FaCheckCircle, FaPlay } from "react-icons/fa";
+import { MdClose } from "react-icons/md";
 import styles from '../styles/components/Countdown.module.css';
 
 let countdownTimeout: NodeJS.Timeout;
@@ -61,7 +63,7 @@ export function Countdown() {
           disabled
           className={styles.countdownButton}
         >
-          Ciclo encerrado
+          Ciclo encerrado &nbsp; <FaCheckCircle color="var(--green)" fontSize="1rem"/>
         </button>
       ) : (
         <>
@@ -71,7 +73,7 @@ export function Countdown() {
               className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
               onClick={resetCountdown}
             >
-              Abandonar ciclo
+              Abandonar ciclo &nbsp; <MdClose />
             </button>
           ) : (
             <button
@@ -79,7 +81,7 @@ export function Countdown() {
               className={styles.countdownButton}
               onClick={startCountdown}
             >
-              Iniciar um ciclo
+              Iniciar um ciclo &nbsp; <FaPlay fontSize="0.9rem" />
             </button>
           )}
         </>
