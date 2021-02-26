@@ -1,0 +1,73 @@
+.loginGitHubContainer {
+  width: 100%;
+  max-width: 400px;
+}
+
+.loginGitHubContainer h1 {
+  color: var(--white);
+  font-size: 2.25rem;
+  font-weight: 500;
+  margin-bottom: 1.75rem;
+}
+
+.loginGitHubContainer div:nth-child(2) {
+  width: 100%;
+  margin-bottom: 1.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginGitHubContainer div:nth-child(2) img {
+  width: 2.5rem;
+  margin-right: 1.2rem;
+}
+
+.loginGitHubContainer div:nth-child(2) p {
+  color: var(--text-highlight);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.loginGitHubContainer div:nth-child(3) {
+  width: 100%;
+  margin-bottom: 0.3rem;
+
+  display: flex;
+}
+
+.loginGitHubContainer div:nth-child(3) input {
+  padding: 1.2rem;
+  border-radius: 5px 0 0 5px;
+  border: 0;
+  color: var(--white);
+  background: linear-gradient(to right, var(--blue-dark), rgba(73, 83, 184, 0.2));
+}
+
+.loginGitHubContainer div:nth-child(3) input::placeholder {
+  color: var(--text-highlight);
+}
+
+.loginGitHubContainer div:nth-child(3) button {
+  width: 4rem;
+  background-color: var(--blue-dark);
+  color: var(--white);
+  font-size: 1.5rem;
+  border: 0;
+  border-radius: 0 5px 5px 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color 0.2s;
+}
+
+.loginGitHubContainer div:nth-child(3) button:hover {
+  background-color: var(--green);
+}
+
+.loginGitHubContainer small {
+  color: var(--green);
+}

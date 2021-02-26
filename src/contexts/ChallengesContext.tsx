@@ -15,6 +15,8 @@ interface ChallengesContextData {
   challengesCompleted: number;
   experienceToNextLevel: number;
   activeChallenge: Challenge;
+  name: string;
+  avatar: string;
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
@@ -31,8 +33,8 @@ interface ChallengesProviderProps {
 
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
-export function ChallengesProvider({ 
-  children, 
+export function ChallengesProvider({
+  children,
   ...rest
 }: ChallengesProviderProps) {
   const [level, setLevel] = useState(rest.level ?? 1);
@@ -40,6 +42,8 @@ export function ChallengesProvider({
   const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLeveUpModalOpen, setIsLeveUpModalOpen] = useState(false);
+  const [name, setName] = useState(Cookies.get('name'));
+  const [avatar, setAvatar] = useState(Cookies.get('avatar'));
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
@@ -65,12 +69,12 @@ export function ChallengesProvider({
   function startNewChallenge() {
     const randomChallengeIndex = Math.floor(Math.random() * challenges.length);
     const challenge = challenges[randomChallengeIndex];
-    
+
     setActiveChallenge(challenge);
 
     new Audio('/notification.mp3').play();
 
-    if(Notification.permission === 'granted') {
+    if (Notification.permission === 'granted') {
       new Notification('Novo desafio!', {
         body: `Valendo ${challenge.amount} xp!`
       });
@@ -90,7 +94,7 @@ export function ChallengesProvider({
 
     let finalExperience = currentExperience + amount;
 
-    if (finalExperience >= experienceToNextLevel){
+    if (finalExperience >= experienceToNextLevel) {
       finalExperience -= experienceToNextLevel;
       levelUp();
     }
@@ -108,6 +112,8 @@ export function ChallengesProvider({
         challengesCompleted,
         experienceToNextLevel,
         activeChallenge,
+        name,
+        avatar,
         levelUp,
         startNewChallenge,
         resetChallenge,

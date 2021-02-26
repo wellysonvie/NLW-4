@@ -1,0 +1,35 @@
+.container {
+  height: 100vh;
+  /* max-width: 992px; */
+  margin: 0 auto;
+  padding: 2.5rem 0;
+
+  background: var(--blue);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container section {
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.25rem;
+  align-content: center;
+}
+
+.container section > div:first-child img {
+  max-height: 80vh;
+}
+
+.container section > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container section div:last-child > img  {
+  width: 22.5rem;
+  margin-bottom: 5rem;
+}
