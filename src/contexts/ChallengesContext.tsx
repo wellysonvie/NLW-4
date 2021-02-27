@@ -42,13 +42,15 @@ export function ChallengesProvider({
   const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted ?? 0);
   const [activeChallenge, setActiveChallenge] = useState(null);
   const [isLeveUpModalOpen, setIsLeveUpModalOpen] = useState(false);
-  const [name, setName] = useState(Cookies.get('name'));
-  const [avatar, setAvatar] = useState(Cookies.get('avatar'));
+  const [name, setName] = useState(null);
+  const [avatar, setAvatar] = useState(null);
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
 
   useEffect(() => {
     Notification.requestPermission();
+    setName(Cookies.get('name'));
+    setAvatar(Cookies.get('avatar'));
   }, []);
 
   useEffect(() => {
