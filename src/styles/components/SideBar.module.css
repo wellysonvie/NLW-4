@@ -32,5 +32,5 @@
 }
 
 .containerSideBar svg:nth-child(3):hover {
-  color: var(--text);
+  color: var(--blue);
 }
