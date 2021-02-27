@@ -8,7 +8,6 @@ import styles from '../styles/components/LoginGitHub.module.css';
 export function LoginGitHub() {
   const [username, setUsername] = useState('');
   const [usernameInvalid, setUsernameInvalid] = useState(false);
-  const [btnColor, setBtnColor] = useState('');
   const router = useRouter();
 
   function login() {
@@ -30,14 +29,6 @@ export function LoginGitHub() {
     }
   }
 
-  function swapBtnColor(usernameValue: string) {
-    if (usernameValue === '') {
-      setBtnColor('');
-    } else {
-      setBtnColor('var(--green)');
-    }
-  }
-
   return (
     <div className={styles.loginGitHubContainer}>
       <h1>Bem-vindo</h1>
@@ -49,7 +40,7 @@ export function LoginGitHub() {
         <input
           type="text"
           name="username"
-          onChange={event => { setUsername(event.target.value); swapBtnColor(event.target.value) }}
+          onChange={event => setUsername(event.target.value)}
           onFocus={event => event.target.placeholder = ''}
           onBlur={event => event.target.placeholder = 'Digite seu username'}
           placeholder="Digite seu username"
@@ -57,7 +48,7 @@ export function LoginGitHub() {
         <button
           type="button"
           onClick={login}
-          style={{ backgroundColor: btnColor }}
+          style={{ backgroundColor: (username !== '' ? 'var(--green)' : '') }}
         >
           <HiArrowRight />
         </button>
