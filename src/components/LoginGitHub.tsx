@@ -10,18 +10,19 @@ export function LoginGitHub() {
   const [usernameInvalid, setUsernameInvalid] = useState(false);
   const router = useRouter();
 
-  async function login() {
+  function login() {
     if (username !== '') {
-      const res = await axios.get(`https://api.github.com/users/${username}`);
-
-      if (res.status == 200) {
-        const user = res.data;
+      
+      axios.get(`https://api.github.com/users/${username}`)
+      .then((response) => {
+        const user = response.data;
         Cookies.set('name', user.name);
         Cookies.set('avatar', user.avatar_url);
         router.push('/home');
-      } else {
+      })
+      .catch((error) => {
         setUsernameInvalid(true);
-      }
+      })
 
     } else {
       setUsernameInvalid(true);
