@@ -16,7 +16,7 @@ export function LoginGitHub() {
       axios.get(`https://api.github.com/users/${username}`)
       .then((response) => {
         const user = response.data;
-        Cookies.set('name', user.name);
+        Cookies.set('name', user.name ?? username);
         Cookies.set('avatar', user.avatar_url);
         router.push('/home');
       })
