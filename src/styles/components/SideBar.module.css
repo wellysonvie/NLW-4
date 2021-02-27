@@ -1,0 +1,36 @@
+.containerSideBar {
+  width: 5rem;
+  padding: 1rem 0;
+  background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
+.containerSideBar svg {
+  font-size: 2rem;
+  width: 100%;
+}
+
+.containerSideBar svg:nth-child(2){
+  position: absolute;
+  top: 50%;
+  border-left: 4px solid var(--blue);
+  color: var(--blue);
+}
+
+.containerSideBar svg:nth-child(3){
+  position: absolute;
+  bottom: 1rem;
+  color: var(--text-highlight);
+  cursor: pointer;
+
+  transition: color 0.2s;
+}
+
+.containerSideBar svg:nth-child(3):hover {
+  color: var(--text);
+}
