@@ -7,7 +7,7 @@ import styles from '../styles/components/LoginGitHub.module.css';
 
 export function LoginGitHub() {
   const [username, setUsername] = useState('');
-  const [usernameInvalid, setUsernameInvalid] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const router = useRouter();
 
   function login() {
@@ -21,11 +21,15 @@ export function LoginGitHub() {
         router.push('/home');
       })
       .catch((error) => {
-        setUsernameInvalid(true);
+        if (error.response && error.response.status == 404) {
+          setErrorMsg('Usuário não encontrado.');
+        } else {
+          setErrorMsg('Ocorreu um erro ao buscar os dados.');
+        }
       })
 
     } else {
-      setUsernameInvalid(true);
+      setErrorMsg('Preencha seu username para continuar.');
     }
   }
 
@@ -44,6 +48,7 @@ export function LoginGitHub() {
           onFocus={event => event.target.placeholder = ''}
           onBlur={event => event.target.placeholder = 'Digite seu username'}
           placeholder="Digite seu username"
+          autoComplete="off"
         />
         <button
           type="button"
@@ -53,7 +58,7 @@ export function LoginGitHub() {
           <HiArrowRight />
         </button>
       </div>
-      { usernameInvalid && <small>Username inválido. Preencha para continuar.</small>}
+      <small>{errorMsg}</small>
     </div>
   );
 }
